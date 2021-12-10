@@ -6,8 +6,10 @@ import com.springboot.rest.dto.UserDto;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user_dispatched_table")
 public class UserDispatched {
 
     @Id

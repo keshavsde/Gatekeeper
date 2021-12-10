@@ -6,8 +6,10 @@ import com.springboot.rest.dto.UserWarehouseDto;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user_warehouse_table")
 public class UserWarehouse {
 
     @Id
