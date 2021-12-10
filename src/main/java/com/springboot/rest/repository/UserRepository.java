@@ -6,6 +6,6 @@ import com.springboot.rest.entity.User;
 
 
 public interface UserRepository extends JpaRepository<User, String>{
-	public User findByUserId(String userId);
+	public User findByVehicleno(String vehicleno);
 
 }

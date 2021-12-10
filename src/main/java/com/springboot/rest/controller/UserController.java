@@ -29,15 +29,15 @@ public class UserController {
 
 	@Autowired
 	private UserDispatchedService userDispatchedService;
-	
+
 	@GetMapping(value = "/alluser", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UserDto> getUserinfo() {
-		return userService.getAllUserInfo();
+		return userService.getAllVehicleno();
 	}
 
-	  @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	  public UserDto getUserById(@PathVariable("userId") String userId) { 
-		  return userService.getUserByUserId(userId); }
+	  @GetMapping(value = "/{vehicleno}", produces = MediaType.APPLICATION_JSON_VALUE)
+	  public UserDto getUserById(@PathVariable("vehicleno") String vehicleno) {
+		  return userService.getUserByVehicleno(vehicleno); }
 
 	@PostMapping(value = "/insert")
 	  public String insertUserDto(@RequestBody UserDto userDto)
@@ -49,12 +49,12 @@ public class UserController {
 
 	@GetMapping(value = "/alluserwarehouse", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UserWarehouseDto> getUserWarehouseinfo() {
-		return userWarehouseService.getAllUserInfo();
+		return userWarehouseService.getAllVehicleno();
 	}
 
-	@GetMapping(value = "/warehouse/{userwarehouseId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserWarehouseDto getUserWarehouseById(@PathVariable("userId") String userwarehouseId) {
-		return userWarehouseService.getUserByUserId(userwarehouseId); }
+	@GetMapping(value = "/warehouse/{vehicleno}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public UserWarehouseDto getUserWarehouseById(@PathVariable("vehicleno") String vehicleno) {
+		return userWarehouseService.getUserByVehicleno(vehicleno); }
 
 	@PostMapping(value = "/insertwarehouse")
 	public String insertUserWarehouseDto(@RequestBody UserWarehouseDto userWarehouseDto)
@@ -65,16 +65,20 @@ public class UserController {
 
 	@GetMapping(value = "/alluserdispatched", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UserDispatchedDto> getUserDispatchedinfo() {
-		return userDispatchedService.getAllUserInfo();
+		return userDispatchedService.getAllVehicleno();
 	}
 
-	@GetMapping(value = "/disapatched/{userdispatchedId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserDispatchedDto getUserDispatchedById(@PathVariable("userId") String userdispatchedId) {
-		return userDispatchedService.getUserByUserId(userdispatchedId); }
+	@GetMapping(value = "/disapatched/{vehicleno}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public UserDispatchedDto getUserDispatchedById(@PathVariable("vehicleno") String vehicleno) {
+		return userDispatchedService.getUserByVehicleno(vehicleno); }
 
-	@PostMapping(value = "/insertwarehouse")
+	@PostMapping(value = "/insertdispatched")
 	public String insertUserDispatchedDto(@RequestBody UserDispatchedDto userDispatchedDto)
 	{
 		return userDispatchedService.insertUserDto(userDispatchedDto);
 	}
+
+
+
+
 }

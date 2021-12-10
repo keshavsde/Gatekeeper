@@ -21,19 +21,19 @@ public class UserService {
 	@Autowired
 	private ConverterService converterService;
 
-	public List<UserDto> getAllUserInfo() {
+	public List<UserDto> getAllVehicleno() {
 		List<User> userDataList = userRepository.findAll();
 		return userDataList.stream().map(converterService::convertToDto).collect(Collectors.toList());
 	}
 
 	
-	  public UserDto getUserByUserId(String userId) { 
-		  User userObj = userRepository.findById(userId).orElse(null);
+	  public UserDto getUserByVehicleno(String vehicleno) {
+		  User userObj = userRepository.findByVehicleno(vehicleno);
 		  return converterService.convertToDto(userObj);
 	  }
 
 	  public String insertUserDto(UserDto userDto){
-		User user = new User(userDto.getUserId(), userDto.getUserName());
+		User user = new User(userDto);
 		  userRepository.save(user);
 		  return "done";
 	  }
