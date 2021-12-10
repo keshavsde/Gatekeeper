@@ -22,12 +22,6 @@ public class UserService {
 	private ConverterService converterService;
 
 	public List<UserDto> getAllUserInfo() {
-		List<User> userList = new ArrayList<>();
-		User userObj1 = new User("111", "First Demo");
-		User userObj2 = new User("222", "Second Demo");
-		userList.add(userObj1);
-		userList.add(userObj2);
-		userRepository.saveAll(userList);
 		List<User> userDataList = userRepository.findAll();
 		return userDataList.stream().map(converterService::convertToDto).collect(Collectors.toList());
 	}
@@ -37,5 +31,12 @@ public class UserService {
 		  User userObj = userRepository.findById(userId).orElse(null);
 		  return converterService.convertToDto(userObj);
 	  }
+
+	  public String insertUserDto(UserDto userDto){
+		User user = new User(userDto.getUserId(), userDto.getUserName());
+		  userRepository.save(user);
+		  return "done";
+	  }
+
 	 
 }
